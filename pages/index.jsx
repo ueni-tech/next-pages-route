@@ -29,57 +29,21 @@ export default function Home({ allPostsData }) {
         <section className={`${utilsStyles.headingMd} ${utilsStyles.padding1px}`}>
           <h2>📝エンジニアのブログ</h2>
           <div className={styles.grid}>
-            <article>
-              <Link href="/">
-                <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
-              </Link>
-              <Link href="/">
-                <span className={utilsStyles.boldText}>SSGとSSRの使い分けについて</span>
-              </Link>
-              <br />
-              <small className={utilsStyles.lightText}>
-                February 23, 2020
-              </small>
-            </article>
+            {allPostsData.map(({ id, title, date, thumbnail }) => (
+              <article key={id}>
+                <Link href={`/posts/${id}`}>
+                  <img src={thumbnail} alt="" className={styles.thumbnailImage} />
+                </Link>
+                <Link href={`/posts/${id}`}>
+                  <span className={utilsStyles.boldText}>{title}</span>
+                </Link>
+                <br />
+                <small className={utilsStyles.lightText}>
+                  {date}
+                </small>
+              </article>
 
-            <article>
-              <Link href="/">
-                <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
-              </Link>
-              <Link href="/">
-                <span className={utilsStyles.boldText}>SSGとSSRの使い分けについて</span>
-              </Link>
-              <br />
-              <small className={utilsStyles.lightText}>
-                February 23, 2020
-              </small>
-            </article>
-
-            <article>
-              <Link href="/">
-                <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
-              </Link>
-              <Link href="/">
-                <span className={utilsStyles.boldText}>SSGとSSRの使い分けについて</span>
-              </Link>
-              <br />
-              <small className={utilsStyles.lightText}>
-                February 23, 2020
-              </small>
-            </article>
-
-            <article>
-              <Link href="/">
-                <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
-              </Link>
-              <Link href="/">
-                <span className={utilsStyles.boldText}>SSGとSSRの使い分けについて</span>
-              </Link>
-              <br />
-              <small className={utilsStyles.lightText}>
-                February 23, 2020
-              </small>
-            </article>
+            ))}
           </div>
         </section>
 
